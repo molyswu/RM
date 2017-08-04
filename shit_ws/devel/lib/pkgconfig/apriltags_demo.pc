@@ -1,0 +1,8 @@
+prefix=/home/leory/shit_ws/devel
+
+Name: apriltags_demo
+Description: Description of apriltags_demo
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/leory/shit_ws/devel/lib 
+Requires: 

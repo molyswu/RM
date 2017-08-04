@@ -1,0 +1,2 @@
+apriltags:apriltags_ros/apriltags:apriltags_ros/apriltags_ros:detect_car:tags_detection:usb_cam
+-DCATKIN_DEVEL_PREFIX=/home/leory/shit_ws/devel -DCMAKE_INSTALL_PREFIX=/home/leory/shit_ws/install -G Unix Makefiles

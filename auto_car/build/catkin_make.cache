@@ -1,0 +1,2 @@
+car_2d_nav:console:logical_core:move_base:odometry:rplidar_ros:serial_comm:tf_tree:vision_unit
+-DCATKIN_DEVEL_PREFIX=/home/leory/auto_car/devel -DCMAKE_INSTALL_PREFIX=/home/leory/auto_car/install -G Unix Makefiles
