@@ -1,0 +1,305 @@
+#!/usr/bin/env python
+
+'''
+Feature-based image matching sample.
+
+Note, that you will need the https://github.com/opencv/opencv_contrib repo for SIFT and SURF
+
+USAGE
+  find_obj.py [--feature=<sift|surf|orb|akaze|brisk>[-flann]] [ <image1> <image2> ]
+
+  --feature  - Feature to use. Can be sift, surf, orb or brisk. Append '-flann'
+               to feature name to use Flann-based matcher instead bruteforce.
+
+  Press left mouse button on a feature point to see its matching point.
+'''
+
+# Python 2/3 compatibility
+from __future__ import print_function
+
+import numpy as np
+import cv2
+from common import anorm, getsize
+from imutils.perspective import four_point_transform
+import imutils
+from imutils import contours
+from matplotlib import pyplot as plt
+import numpy as np
+import glob
+import argparse
+import imutils
+import cv2
+import sys
+FLANN_INDEX_KDTREE = 1  # bug: flann enums are missing
+FLANN_INDEX_LSH    = 6
+
+DIGITS_LOOKUP = {
+    (1, 1, 1, 0, 1, 1, 1): 0,
+    (0, 0, 1, 0, 0, 1, 0): 1,
+    (1, 0, 1, 1, 1, 1, 0): 2,
+    (1, 0, 1, 1, 0, 1, 1): 3,
+    (0, 1, 1, 1, 0, 1, 0): 4,
+    (1, 1, 0, 1, 0, 1, 1): 5,
+    (1, 1, 0, 1, 1, 1, 1): 6,
+    (1, 0, 1, 0, 0, 1, 0): 7,
+    (1, 1, 1, 1, 1, 1, 1): 8,
+    (1, 1, 1, 1, 0, 1, 1): 9
+}
+
+
+def init_feature(name):
+    chunks = name.split('-')
+    if chunks[0] == 'sift':
+        detector = cv2.xfeatures2d.SIFT_create()
+        norm = cv2.NORM_L2
+    elif chunks[0] == 'surf':
+        detector = cv2.xfeatures2d.SURF_create(800)
+        norm = cv2.NORM_L2
+    elif chunks[0] == 'orb':
+        detector = cv2.ORB_create(400)
+        norm = cv2.NORM_HAMMING
+    elif chunks[0] == 'akaze':
+        detector = cv2.AKAZE_create()
+        norm = cv2.NORM_HAMMING
+    elif chunks[0] == 'brisk':
+        detector = cv2.BRISK_create()
+        norm = cv2.NORM_HAMMING
+    else:
+        return None, None
+    if 'flann' in chunks:
+        if norm == cv2.NORM_L2:
+            flann_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+        else:
+            flann_params= dict(algorithm = FLANN_INDEX_LSH,
+                               table_number = 6, # 12
+                               key_size = 12,     # 20
+                               multi_probe_level = 1) #2
+        matcher = cv2.FlannBasedMatcher(flann_params, {})  # bug : need to pass empty dict (#1329)
+    else:
+        matcher = cv2.BFMatcher(norm)
+    return detector, matcher
+
+
+def filter_matches(kp1, kp2, matches, ratio = 0.75):
+    mkp1, mkp2 = [], []
+    for m in matches:
+        if len(m) == 2 and m[0].distance < m[1].distance * ratio:
+            m = m[0]
+            mkp1.append( kp1[m.queryIdx] )
+            mkp2.append( kp2[m.trainIdx] )
+    p1 = np.float32([kp.pt for kp in mkp1])
+    p2 = np.float32([kp.pt for kp in mkp2])
+    kp_pairs = zip(mkp1, mkp2)
+    return p1, p2, list(kp_pairs)
+
+def explore_match(win, img1, img2, kp_pairs, status = None, H = None):
+    h1, w1 = img1.shape[:2]
+    h2, w2 = img2.shape[:2]
+    vis = np.zeros((max(h1, h2), w1+w2), np.uint8)
+    vis[:h1, :w1] = img1
+    vis[:h2, w1:w1+w2] = img2
+    img3 = cv2.imread("test.jpg")
+    vis = cv2.cvtColor(vis, cv2.COLOR_GRAY2BGR)
+
+    if H is not None:
+        cornerss = np.float32([[0, 0], [w1, 0], [w1, h1], [0, h1]])
+        corners = np.int32( cv2.perspectiveTransform(cornerss.reshape(1, -1, 2), H).reshape(-1, 2) + (w1, 0) )
+        corners2 = np.int32( cv2.perspectiveTransform(cornerss.reshape(1, -1, 2), H).reshape(-1, 2))
+        #Find out how to finish the box and return it to color one.
+        #[x,y,w,h] = cv2.perspectiveTransform(cornerss.reshape(1, -1, 2), H).reshape(-1, 2))
+        cv2.polylines(vis, [corners], True, (255, 255, 255))
+        target = cv2.polylines(img3, [corners2], True, (255, 255, 255))
+        target = target[corners2]
+        #print corners2
+        #roi = target[y:y + h, x:x + w]
+        #target =
+        cv2.imshow("target", target)
+
+    if status is None:
+        status = np.ones(len(kp_pairs), np.bool_)
+    p1, p2 = [], []  # python 2 / python 3 change of zip unpacking
+    for kpp in kp_pairs:
+        p1.append(np.int32(kpp[0].pt))
+        p2.append(np.int32(np.array(kpp[1].pt) + [w1, 0]))
+
+    green = (0, 255, 0)
+    red = (0, 0, 255)
+    white = (255, 255, 255)
+    kp_color = (51, 103, 236)
+    for (x1, y1), (x2, y2), inlier in zip(p1, p2, status):
+        if inlier:
+            col = green
+            cv2.circle(vis, (x1, y1), 2, col, -1)
+            cv2.circle(vis, (x2, y2), 2, col, -1)
+        else:
+            col = red
+            r = 2
+            thickness = 3
+            cv2.line(vis, (x1-r, y1-r), (x1+r, y1+r), col, thickness)
+            cv2.line(vis, (x1-r, y1+r), (x1+r, y1-r), col, thickness)
+            cv2.line(vis, (x2-r, y2-r), (x2+r, y2+r), col, thickness)
+            cv2.line(vis, (x2-r, y2+r), (x2+r, y2-r), col, thickness)
+    vis0 = vis.copy()
+    for (x1, y1), (x2, y2), inlier in zip(p1, p2, status):
+        if inlier:
+            cv2.line(vis, (x1, y1), (x2, y2), green)
+
+    cv2.imshow(win, vis)
+#######################################################
+#combination of digits-recognition
+    kernel = np.ones((5,5),np.uint8)
+    lower = np.array([104, 186, 0], dtype = "uint8")
+    higher = np.array([255, 255, 255], dtype = "uint8")
+    blurred = cv2.GaussianBlur(target, (5, 5), 0)
+    edged = cv2.inRange(blurred,lower, higher)
+
+    kernel2 = np.ones((2,2),np.uint8)
+    edged= cv2.dilate(edged, kernel2, iterations = 1)
+    # find contours in the thresholded image, then initialize the
+    # digit contours lists
+    cnts = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL,
+        cv2.CHAIN_APPROX_SIMPLE)
+
+    cnts = cnts[0] if imutils.is_cv2() else cnts[1]
+    digitCnts = []
+    # loop over the digit area candidates
+    for c in cnts:
+        # compute the bounding box of the contour
+        (x, y, w, h) = cv2.boundingRect(c)
+        
+
+        # if the contour is sufficiently large, it must be a digit
+        if w >= 15 and (h >= 30 and h <=  40) :
+            digitCnts.append(c)
+            cv2.rectangle(edged, (x, y), (x + w, y + h), (255, 255, 0), 1)
+    # sort the contours from left-to-right, then initialize the
+    # actual digits themselves
+    digitCnts = contours.sort_contours(digitCnts, method="left-to-right")[0]
+    digits = []
+    # loop over each of the digits
+    cv2.imshow("edged", edged)
+
+    for c in digitCnts:
+        # extract the digit ROI
+        (x, y, w, h) = cv2.boundingRect(c)
+        roi = edged[y:y + h, x:x + w]
+        # compute the width and height of each of the 7 segments
+        # we are going to examiimne
+        (roiH, roiW) = roi.shape
+        (dW, dH) = (int(roiW * 0.25), int(roiH * 0.15))
+        dHC = int(roiH * 0.05)
+        # define the set of 7 segments
+        segments = [
+            ((0, 0), (w, dH)),  # top
+            ((0, 0), (dW, h // 2)), # top-left
+            ((w - dW, 0), (w, h // 2)), # top-right
+            ((0, (h // 2) - dHC) , (w, (h // 2) + dHC)), # center
+            ((0, h // 2), (dW, h)), # bottom-left
+            ((w - dW, h // 2), (w, h)), # bottom-right
+            ((0, h - dH), (w, h))   # bottom
+        ]
+        on = [0] * len(segments)
+
+        # loop over the segments
+        for (i, ((xA, yA), (xB, yB))) in enumerate(segments):
+            # extract the segment ROI, count the total number of
+            # thresholded pixels in the segment, and then compute
+            # the area of the segment
+            segROI = roi[yA:yB, xA:xB]
+            total = cv2.countNonZero(segROI)
+            area = (xB - xA) * (yB - yA)
+
+            # if the total number of non-zero pixels is greater than
+            # 50% of the area, mark the segment as "on"
+            if total / float(area) > 0.6:
+                on[i]= 1
+                
+        # lookup the digit and draw it on the image
+        digit = DIGITS_LOOKUP[tuple(on)]
+        digits.append(digit)
+        cv2.rectangle(target, (x, y), (x + w, y + h), (0, 255, 0), 1)
+        cv2.putText(target, str(digit), (x - 10, y - 10),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.65, (0, 255, 0), 2)
+
+    # display the digits
+    #rint digits
+    cv2.imshow("Input", target)
+    cv2.waitKey(0)
+
+    def onmouse(event, x, y, flags, param):
+        cur_vis = vis
+        if flags & cv2.EVENT_FLAG_LBUTTON:
+            cur_vis = vis0.copy()
+            r = 8
+            m = (anorm(np.array(p1) - (x, y)) < r) | (anorm(np.array(p2) - (x, y)) < r)
+            idxs = np.where(m)[0]
+            kp1s, kp2s = [], []
+            for i in idxs:
+                 (x1, y1), (x2, y2) = p1[i], p2[i]
+                 col = (red, green)[status[i]]
+                 cv2.line(cur_vis, (x1, y1), (x2, y2), col)
+                 kp1, kp2 = kp_pairs[i]
+                 kp1s.append(kp1)
+                 kp2s.append(kp2)
+            cur_vis = cv2.drawKeypoints(cur_vis, kp1s, None, flags=4, color=kp_color)
+            cur_vis[:,w1:] = cv2.drawKeypoints(cur_vis[:,w1:], kp2s, None, flags=4, color=kp_color)
+
+        cv2.imshow(win, cur_vis)
+    cv2.setMouseCallback(win, onmouse)
+    return vis
+
+
+if __name__ == '__main__':
+    print(__doc__)
+
+    import sys, getopt
+    opts, args = getopt.getopt(sys.argv[1:], '', ['feature='])
+    opts = dict(opts)
+    feature_name = opts.get('--feature', 'brisk')
+    try:
+        fn1, fn2 = args
+    except:
+        fn1 = 'template2.jpg'
+        fn2 = 'test.jpg'
+
+    img1 = cv2.imread(fn1, 0)
+    img2 = cv2.imread(fn2, 0)
+    detector, matcher = init_feature(feature_name)
+
+    if img1 is None:
+        print('Failed to load fn1:', fn1)
+        sys.exit(1)
+
+    if img2 is None:
+        print('Failed to load fn2:', fn2)
+        sys.exit(1)
+
+    if detector is None:
+        print('unknown feature:', feature_name)
+        sys.exit(1)
+
+    print('using', feature_name)
+
+    kp1, desc1 = detector.detectAndCompute(img1, None)
+    kp2, desc2 = detector.detectAndCompute(img2, None)
+    print('img1 - %d features, img2 - %d features' % (len(kp1), len(kp2)))
+    cv2.waitKey()
+
+    cv2.destroyAllWindows()
+    def match_and_draw(win):
+        print('matching...')
+        raw_matches = matcher.knnMatch(desc1, trainDescriptors = desc2, k = 2) #2
+        p1, p2, kp_pairs = filter_matches(kp1, kp2, raw_matches)
+        if len(p1) >= 4:
+            H, status = cv2.findHomography(p1, p2, cv2.RANSAC, 5.0)
+            print('%d / %d  inliers/matched' % (np.sum(status), len(status)))
+        else:
+            H, status = None, None
+            print('%d matches found, not enough for homography estimation' % len(p1))
+
+        vis = explore_match(win, img1, img2, kp_pairs, status, H)
+
+    match_and_draw('find_obj')
+
+
+
