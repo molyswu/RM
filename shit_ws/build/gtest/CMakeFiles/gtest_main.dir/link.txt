@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC   -shared -Wl,-soname,libgtest_main.so -o libgtest_main.so CMakeFiles/gtest_main.dir/src/gtest_main.cc.o  -L/home/leory/shit_ws/build/gtest/src -lpthread libgtest.so -lpthread -Wl,-rpath,/home/leory/shit_ws/build/gtest/src:/home/leory/shit_ws/build/gtest 
+/usr/bin/c++  -fPIC    -shared -Wl,-soname,libgtest_main.so -o libgtest_main.so CMakeFiles/gtest_main.dir/src/gtest_main.cc.o  -L/home/leroypc/RM/shit_ws/build/gtest/src -lpthread libgtest.so -lpthread -Wl,-rpath,/home/leroypc/RM/shit_ws/build/gtest/src:/home/leroypc/RM/shit_ws/build/gtest 

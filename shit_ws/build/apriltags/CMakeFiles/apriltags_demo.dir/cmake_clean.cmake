@@ -1,4 +1,4 @@
-file(REMOVE_RECURSE
+FILE(REMOVE_RECURSE
   "CMakeFiles/apriltags_demo.dir/example/apriltags_demo.cpp.o"
   "CMakeFiles/apriltags_demo.dir/src/Edge.cc.o"
   "CMakeFiles/apriltags_demo.dir/src/FloatImage.cc.o"
@@ -14,11 +14,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/apriltags_demo.dir/src/TagDetector.cc.o"
   "CMakeFiles/apriltags_demo.dir/src/TagFamily.cc.o"
   "CMakeFiles/apriltags_demo.dir/src/UnionFindSimple.cc.o"
-  "/home/leory/shit_ws/devel/lib/apriltags_demo/apriltags_demo.pdb"
-  "/home/leory/shit_ws/devel/lib/apriltags_demo/apriltags_demo"
+  "/home/leroypc/RM/shit_ws/devel/lib/apriltags_demo/apriltags_demo.pdb"
+  "/home/leroypc/RM/shit_ws/devel/lib/apriltags_demo/apriltags_demo"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
-  include(CMakeFiles/apriltags_demo.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach()
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/apriltags_demo.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

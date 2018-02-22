@@ -1,10 +1,10 @@
-file(REMOVE_RECURSE
+FILE(REMOVE_RECURSE
   "CMakeFiles/usb_cam_node.dir/nodes/usb_cam_node.cpp.o"
-  "/home/leory/shit_ws/devel/lib/usb_cam/usb_cam_node.pdb"
-  "/home/leory/shit_ws/devel/lib/usb_cam/usb_cam_node"
+  "/home/leroypc/RM/shit_ws/devel/lib/usb_cam/usb_cam_node.pdb"
+  "/home/leroypc/RM/shit_ws/devel/lib/usb_cam/usb_cam_node"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
-  include(CMakeFiles/usb_cam_node.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach()
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/usb_cam_node.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

@@ -1,10 +1,10 @@
-file(REMOVE_RECURSE
+FILE(REMOVE_RECURSE
   "CMakeFiles/talker.dir/src/tags_publisher.cpp.o"
-  "/home/leory/shit_ws/devel/lib/tags_detection/talker.pdb"
-  "/home/leory/shit_ws/devel/lib/tags_detection/talker"
+  "/home/leroypc/RM/shit_ws/devel/lib/tags_detection/talker.pdb"
+  "/home/leroypc/RM/shit_ws/devel/lib/tags_detection/talker"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
-  include(CMakeFiles/talker.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach()
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/talker.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

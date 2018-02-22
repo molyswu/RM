@@ -66,7 +66,7 @@ float64 z"""
     """
     try:
       _x = self
-      buff.write(_get_struct_h3d().pack(_x.type, _x.data.x, _x.data.y, _x.data.z))
+      buff.write(_struct_h3d.pack(_x.type, _x.data.x, _x.data.y, _x.data.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -82,7 +82,7 @@ float64 z"""
       _x = self
       start = end
       end += 26
-      (_x.type, _x.data.x, _x.data.y, _x.data.z,) = _get_struct_h3d().unpack(str[start:end])
+      (_x.type, _x.data.x, _x.data.y, _x.data.z,) = _struct_h3d.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -96,7 +96,7 @@ float64 z"""
     """
     try:
       _x = self
-      buff.write(_get_struct_h3d().pack(_x.type, _x.data.x, _x.data.y, _x.data.z))
+      buff.write(_struct_h3d.pack(_x.type, _x.data.x, _x.data.y, _x.data.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -113,18 +113,10 @@ float64 z"""
       _x = self
       start = end
       end += 26
-      (_x.type, _x.data.x, _x.data.y, _x.data.z,) = _get_struct_h3d().unpack(str[start:end])
+      (_x.type, _x.data.x, _x.data.y, _x.data.z,) = _struct_h3d.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-def _get_struct_I():
-    global _struct_I
-    return _struct_I
-_struct_h3d = None
-def _get_struct_h3d():
-    global _struct_h3d
-    if _struct_h3d is None:
-        _struct_h3d = struct.Struct("<h3d")
-    return _struct_h3d
+_struct_h3d = struct.Struct("<h3d")

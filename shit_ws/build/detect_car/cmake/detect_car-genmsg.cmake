@@ -2,13 +2,11 @@
 
 message(STATUS "detect_car: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Idetect_car:/home/leory/shit_ws/src/detect_car/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Idetect_car:/home/leroypc/RM/shit_ws/src/detect_car/msg;-Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/indigo/share/geometry_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
-find_package(geneus REQUIRED)
 find_package(genlisp REQUIRED)
-find_package(gennodejs REQUIRED)
 find_package(genpy REQUIRED)
 
 add_custom_target(detect_car_generate_messages ALL)
@@ -17,21 +15,21 @@ add_custom_target(detect_car_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
 add_custom_target(_detect_car_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "detect_car" "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" "geometry_msgs/Vector3"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "detect_car" "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg" "geometry_msgs/Vector3"
 )
 
 #
-#  langs = gencpp;geneus;genlisp;gennodejs;genpy
+#  langs = gencpp;genlisp;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(detect_car
-  "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg"
+  "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  "/opt/ros/indigo/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/detect_car
 )
 
@@ -49,7 +47,7 @@ add_custom_target(detect_car_generate_messages_cpp
 add_dependencies(detect_car_generate_messages detect_car_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
 add_dependencies(detect_car_generate_messages_cpp _detect_car_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -59,45 +57,12 @@ add_dependencies(detect_car_gencpp detect_car_generate_messages_cpp)
 # register target for catkin_package(EXPORTED_TARGETS)
 list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS detect_car_generate_messages_cpp)
 
-### Section generating for lang: geneus
-### Generating Messages
-_generate_msg_eus(detect_car
-  "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/detect_car
-)
-
-### Generating Services
-
-### Generating Module File
-_generate_module_eus(detect_car
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/detect_car
-  "${ALL_GEN_OUTPUT_FILES_eus}"
-)
-
-add_custom_target(detect_car_generate_messages_eus
-  DEPENDS ${ALL_GEN_OUTPUT_FILES_eus}
-)
-add_dependencies(detect_car_generate_messages detect_car_generate_messages_eus)
-
-# add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
-add_dependencies(detect_car_generate_messages_eus _detect_car_generate_messages_check_deps_${_filename})
-
-# target for backward compatibility
-add_custom_target(detect_car_geneus)
-add_dependencies(detect_car_geneus detect_car_generate_messages_eus)
-
-# register target for catkin_package(EXPORTED_TARGETS)
-list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS detect_car_generate_messages_eus)
-
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(detect_car
-  "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg"
+  "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  "/opt/ros/indigo/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/detect_car
 )
 
@@ -115,7 +80,7 @@ add_custom_target(detect_car_generate_messages_lisp
 add_dependencies(detect_car_generate_messages detect_car_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
 add_dependencies(detect_car_generate_messages_lisp _detect_car_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -125,45 +90,12 @@ add_dependencies(detect_car_genlisp detect_car_generate_messages_lisp)
 # register target for catkin_package(EXPORTED_TARGETS)
 list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS detect_car_generate_messages_lisp)
 
-### Section generating for lang: gennodejs
-### Generating Messages
-_generate_msg_nodejs(detect_car
-  "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/detect_car
-)
-
-### Generating Services
-
-### Generating Module File
-_generate_module_nodejs(detect_car
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/detect_car
-  "${ALL_GEN_OUTPUT_FILES_nodejs}"
-)
-
-add_custom_target(detect_car_generate_messages_nodejs
-  DEPENDS ${ALL_GEN_OUTPUT_FILES_nodejs}
-)
-add_dependencies(detect_car_generate_messages detect_car_generate_messages_nodejs)
-
-# add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
-add_dependencies(detect_car_generate_messages_nodejs _detect_car_generate_messages_check_deps_${_filename})
-
-# target for backward compatibility
-add_custom_target(detect_car_gennodejs)
-add_dependencies(detect_car_gennodejs detect_car_generate_messages_nodejs)
-
-# register target for catkin_package(EXPORTED_TARGETS)
-list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS detect_car_generate_messages_nodejs)
-
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(detect_car
-  "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg"
+  "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  "/opt/ros/indigo/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/detect_car
 )
 
@@ -181,7 +113,7 @@ add_custom_target(detect_car_generate_messages_py
 add_dependencies(detect_car_generate_messages detect_car_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/leory/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/leroypc/RM/shit_ws/src/detect_car/msg/flight_msg.msg" NAME_WE)
 add_dependencies(detect_car_generate_messages_py _detect_car_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -207,20 +139,6 @@ if(TARGET geometry_msgs_generate_messages_cpp)
   add_dependencies(detect_car_generate_messages_cpp geometry_msgs_generate_messages_cpp)
 endif()
 
-if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/detect_car)
-  # install generated code
-  install(
-    DIRECTORY ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/detect_car
-    DESTINATION ${geneus_INSTALL_DIR}
-  )
-endif()
-if(TARGET std_msgs_generate_messages_eus)
-  add_dependencies(detect_car_generate_messages_eus std_msgs_generate_messages_eus)
-endif()
-if(TARGET geometry_msgs_generate_messages_eus)
-  add_dependencies(detect_car_generate_messages_eus geometry_msgs_generate_messages_eus)
-endif()
-
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/detect_car)
   # install generated code
   install(
@@ -233,20 +151,6 @@ if(TARGET std_msgs_generate_messages_lisp)
 endif()
 if(TARGET geometry_msgs_generate_messages_lisp)
   add_dependencies(detect_car_generate_messages_lisp geometry_msgs_generate_messages_lisp)
-endif()
-
-if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/detect_car)
-  # install generated code
-  install(
-    DIRECTORY ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/detect_car
-    DESTINATION ${gennodejs_INSTALL_DIR}
-  )
-endif()
-if(TARGET std_msgs_generate_messages_nodejs)
-  add_dependencies(detect_car_generate_messages_nodejs std_msgs_generate_messages_nodejs)
-endif()
-if(TARGET geometry_msgs_generate_messages_nodejs)
-  add_dependencies(detect_car_generate_messages_nodejs geometry_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/detect_car)

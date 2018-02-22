@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export PWD="/home/leory/shit_ws/build"
+export CMAKE_PREFIX_PATH="/home/leroypc/RM/shit_ws/devel:$CMAKE_PREFIX_PATH"
+export PWD="/home/leroypc/RM/shit_ws/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/leroypc/RM/shit_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/leroypc/RM/shit_ws/src:$ROS_PACKAGE_PATH"
