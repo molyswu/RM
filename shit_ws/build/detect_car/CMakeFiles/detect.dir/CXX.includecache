@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/leroypc/RM/shit_ws/devel/include/detect_car/flight_msg.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+geometry_msgs/Vector3.h
+-
+
 /home/leroypc/RM/shit_ws/src/detect_car/codes/detect.cpp
 opencv2/opencv.hpp
 /home/leroypc/RM/shit_ws/src/detect_car/codes/opencv2/opencv.hpp
@@ -50,6 +68,22 @@ string
 vector
 -
 time.h
+-
+
+/opt/ros/indigo/include/geometry_msgs/Vector3.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
 -
 
 /opt/ros/indigo/include/ros/advertise_options.h
@@ -258,6 +292,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/indigo/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/indigo/include/ros/message_traits.h

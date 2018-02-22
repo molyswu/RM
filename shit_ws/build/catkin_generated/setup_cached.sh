@@ -8,6 +8,10 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/leroypc/RM/shit_ws/devel:$CMAKE_PREFIX_PATH"
+export CPATH="/home/leroypc/RM/shit_ws/devel/include:$CPATH"
+export LD_LIBRARY_PATH="/home/leroypc/RM/shit_ws/devel/lib:/home/leroypc/click/devel/lib:/opt/lula/lib:/opt/ros/indigo/lib:/opt/ros/indigo/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/leroypc/RM/shit_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/leroypc/RM/shit_ws/build"
+export PYTHONPATH="/home/leroypc/RM/shit_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/leroypc/RM/shit_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/leroypc/RM/shit_ws/src:$ROS_PACKAGE_PATH"
