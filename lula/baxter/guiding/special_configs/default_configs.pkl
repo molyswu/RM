@@ -1,1 +1,0 @@
-/opt/lula/share/lula_baxter/config/default_configs.pkl

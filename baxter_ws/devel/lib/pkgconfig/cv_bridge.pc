@@ -1,8 +1,0 @@
-prefix=/home/leroypc/baxter_ws/devel
-
-Name: cv_bridge
-Description: Description of cv_bridge
-Version: 1.12.4
-Cflags: -I/home/leroypc/baxter_ws/src/test/vision_opencv/cv_bridge/include -I/usr/local/include -I/usr/local/include/opencv
-Libs: -L/home/leroypc/baxter_ws/devel/lib -lcv_bridge -l:/usr/local/lib/libopencv_core.so.3.3.0 -l:/usr/local/lib/libopencv_imgproc.so.3.3.0 -l:/usr/local/lib/libopencv_imgcodecs.so.3.3.0
-Requires: rosconsole sensor_msgs

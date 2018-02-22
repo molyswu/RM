@@ -1,8 +1,0 @@
-approach_reference: [.2,-.5,.6] #relate to target pose?
-approach_standoff: .12
-local_grasp_target: [0., 0., .05] #the local target
-
-obj_control_frame: bottom
-target_standoff: .05
-target_standoff_required_error: .03
-obj_target: [0.8, 0.16, 0.0386]

@@ -1,8 +1,0 @@
-prefix=/home/leroypc/baxter_ws/devel
-
-Name: image_publisher
-Description: Description of image_publisher
-Version: 1.12.20
-Cflags: -I/home/leroypc/baxter_ws/devel/include
-Libs: -L/home/leroypc/baxter_ws/devel/lib 
-Requires: 

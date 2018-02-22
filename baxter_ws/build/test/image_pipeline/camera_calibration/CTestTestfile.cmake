@@ -1,8 +1,0 @@
-# CMake generated Testfile for 
-# Source directory: /home/leroypc/baxter_ws/src/test/image_pipeline/camera_calibration
-# Build directory: /home/leroypc/baxter_ws/build/test/image_pipeline/camera_calibration
-# 
-# This file includes the relevant testing commands required for 
-# testing this directory and lists subdirectories to be tested as well.
-ADD_TEST(_ctest_camera_calibration_nosetests_test.directed.py "/home/leroypc/baxter_ws/build/catkin_generated/env_cached.sh" "/usr/bin/python" "/opt/ros/indigo/share/catkin/cmake/test/run_tests.py" "/home/leroypc/baxter_ws/build/test_results/camera_calibration/nosetests-test.directed.py.xml" "--return-code" "/usr/bin/cmake -E make_directory /home/leroypc/baxter_ws/build/test_results/camera_calibration" "/usr/bin/nosetests-2.7 -P --process-timeout=60 /home/leroypc/baxter_ws/src/test/image_pipeline/camera_calibration/test/directed.py --with-xunit --xunit-file=/home/leroypc/baxter_ws/build/test_results/camera_calibration/nosetests-test.directed.py.xml")
-ADD_TEST(_ctest_camera_calibration_nosetests_test.multiple_boards.py "/home/leroypc/baxter_ws/build/catkin_generated/env_cached.sh" "/usr/bin/python" "/opt/ros/indigo/share/catkin/cmake/test/run_tests.py" "/home/leroypc/baxter_ws/build/test_results/camera_calibration/nosetests-test.multiple_boards.py.xml" "--return-code" "/usr/bin/cmake -E make_directory /home/leroypc/baxter_ws/build/test_results/camera_calibration" "/usr/bin/nosetests-2.7 -P --process-timeout=60 /home/leroypc/baxter_ws/src/test/image_pipeline/camera_calibration/test/multiple_boards.py --with-xunit --xunit-file=/home/leroypc/baxter_ws/build/test_results/camera_calibration/nosetests-test.multiple_boards.py.xml")

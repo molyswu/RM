@@ -1,2 +1,0 @@
-click/src/click_demo:openni_camera
--DCATKIN_DEVEL_PREFIX=/home/leroypc/leroy_ws/devel -DCMAKE_INSTALL_PREFIX=/home/leroypc/leroy_ws/install -G Unix Makefiles

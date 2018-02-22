@@ -1,8 +1,0 @@
-prefix=/home/leroypc/baxter_ws/devel
-
-Name: baxter_urdf_builder
-Description: Description of baxter_urdf_builder
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/leroypc/baxter_ws/devel/lib 
-Requires: 
