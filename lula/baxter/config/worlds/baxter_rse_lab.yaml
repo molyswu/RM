@@ -1,0 +1,22 @@
+base_frame: base
+objects:
+  side_table:
+    pose:
+      position: { x: 0.275, y: 1.159, z: -0.57500 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cube
+      scale: { x: 1., y: 1., z: .85 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    collision_buffer: .05
+    is_static: true
+  wire_bundle:
+    pose:
+      position: { x: .502, y: .986, z: -.065 }
+      orientation: { w: 0.706, x: 0.03918, y: 0.043487, z: -0.705768 }
+    model:
+      type: cylinder
+      scale: { x: .2, y: .2, z: 3. }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    collision_buffer: .0
+    is_static: true

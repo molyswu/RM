@@ -1,0 +1,44 @@
+base_frame: world
+objects:
+  cylinder:
+    pose:
+      position: {x: 0.55, y: -0.12, z: 0.4}
+      orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+    model:
+      type: cylinder
+      scale: {x: 0.04, y: 0.04, z: 0.20}
+      color: {a: 1.00, r: 0.30, g: 0.20, b: 0.70}
+    control_frames:
+    - name: bottom
+      frame:
+        position: {x: 0.00, y: 0.00, z: -0.10}
+        orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+    - name: center
+      frame:
+        position: {x: 0.00, y: 0.00, z: 0.00}
+        orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+    - name: top
+      frame:
+        position: {x: 0.00, y: 0.00, z: 0.10}
+        orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+  cylinder2:
+    pose:
+      position: {x: 0.55, y: 0.12, z: 0.4}
+      orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+    model:
+      type: cylinder
+      scale: {x: 0.04, y: 0.04, z: 0.20}
+      color: {a: 1.00, r: 0.30, g: 0.20, b: 0.70}
+    control_frames:
+    - name: bottom
+      frame:
+        position: {x: 0.00, y: 0.00, z: -0.10}
+        orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+    - name: center
+      frame:
+        position: {x: 0.00, y: 0.00, z: 0.00}
+        orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}
+    - name: top
+      frame:
+        position: {x: 0.00, y: 0.00, z: 0.10}
+        orientation: {w: 1.00, x: 0.00, y: 0.00, z: 0.00}

@@ -1,0 +1,8 @@
+prefix=/home/leroypc/baxter_ws/install
+
+Name: camera_controller
+Description: Description of camera_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/leroypc/baxter_ws/install/lib 
+Requires: 

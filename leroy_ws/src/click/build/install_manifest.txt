@@ -1,0 +1,6 @@
+/home/leroypc/click/install/_setup_util.py
+/home/leroypc/click/install/env.sh
+/home/leroypc/click/install/setup.bash
+/home/leroypc/click/install/setup.sh
+/home/leroypc/click/install/setup.zsh
+/home/leroypc/click/install/.rosinstall

@@ -1,0 +1,71 @@
+base_frame: base
+objects:
+  cylinder:
+    pose:
+      position: { x: .8, y: 0.0, z: 0.3 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.1, y: 0.1, z: 0.3 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    control_frames:
+      - name: bottom
+        frame:
+          position: { x: 0., y: 0., z: -0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+      - name: top
+        frame:
+          position: { x: 0.0, y: 0.0, z: 0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+  cylinder2:
+    pose:
+      position: { x: 1., y: -.2, z: 0.3 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.1, y: 0.1, z: 0.3 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    control_frames:
+      - name: bottom
+        frame:
+          position: { x: 0., y: 0., z: -0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+      - name: top
+        frame:
+          position: { x: 0.0, y: 0.0, z: 0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+  cylinder3:
+    pose:
+      position: { x: 1., y: .0, z: 0.3 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.1, y: 0.1, z: 0.3 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    control_frames:
+      - name: bottom
+        frame:
+          position: { x: 0., y: 0., z: -0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+      - name: top
+        frame:
+          position: { x: 0.0, y: 0.0, z: 0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+  cylinder4:
+    pose:
+      position: { x: 1., y: .2, z: 0.3 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.1, y: 0.1, z: 0.3 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    control_frames:
+      - name: bottom
+        frame:
+          position: { x: 0., y: 0., z: -0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+      - name: top
+        frame:
+          position: { x: 0.0, y: 0.0, z: 0.15 }
+          orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+

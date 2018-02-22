@@ -1,0 +1,6 @@
+set(baxter_pick_and_place_SETUP_PY_VERSION "0.0.0")
+set(baxter_pick_and_place_SETUP_PY_SCRIPTS "")
+set(baxter_pick_and_place_SETUP_PY_PACKAGES "baxter_pick_and_place")
+set(baxter_pick_and_place_SETUP_PY_PACKAGE_DIRS "src/baxter_pick_and_place")
+set(baxter_pick_and_place_SETUP_PY_MODULES "")
+set(baxter_pick_and_place_SETUP_PY_MODULE_DIRS "")

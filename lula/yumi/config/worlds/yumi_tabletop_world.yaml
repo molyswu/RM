@@ -1,0 +1,157 @@
+base_frame: world
+objects:
+  table:
+    pose:
+      position: { x: .5, y: .0, z: .3 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cube
+      scale: { x: .5, y: .7, z: .025 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    collision_buffer: .01
+    is_static: true
+  leg1:
+    pose:
+      position: { x: .3, y: -.3, z: .14 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.04, y: 0.04, z: 0.3 }
+      color: { a: 1.0, r: 0.3, g: 0.2, b: 0.7 }
+    is_static: true
+  leg2:
+    pose:
+      position: { x: .3, y: .3, z: .14 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.04, y: 0.04, z: 0.3 }
+      color: { a: 1.0, r: 0.3, g: 0.2, b: 0.7 }
+    is_static: true
+  leg3:
+    pose:
+      position: { x: .7, y: -.3, z: .14 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    pose_topic: /world/objects/leg3/pose
+    model:
+      type: cylinder
+      scale: { x: 0.04, y: 0.04, z: 0.3 }
+      color: { a: 1.0, r: 0.3, g: 0.2, b: 0.7 }
+    is_static: true
+  leg4:
+    pose:
+      position: { x: .7, y: .3, z: .14 }
+      orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+    model:
+      type: cylinder
+      scale: { x: 0.04, y: 0.04, z: 0.3 }
+      color: { a: 1.0, r: 0.3, g: 0.2, b: 0.7 }
+    is_static: true
+  trash_can1:
+    pose:
+      position: { x: .6, y: -.2, z: .4 }
+      orientation: { w: -.794, x: 0., y: 0., z: .607 }
+    model:
+      type: cube
+      scale: { x: .05, y: .1, z: 0.2 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    control_frames: []
+    collision_buffer: .01
+  trash_can2:
+    pose:
+      position: { x: .4, y: .2, z: .4 }
+      orientation: { w: .236, x: 0., y: 0., z: .972 }
+    model:
+      type: cube
+      scale: { x: .05, y: .1, z: 0.2 }
+      color: { a: 1.0, r: 0.34, g: 0.51, b: 0.51 }
+    control_frames: []
+    collision_buffer: .01
+#    sphere1:
+#      pose:
+#        position: { x: .9, y: -.2, z: 0.55 }
+#        orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      pose_topic: /world/objects/sphere1/pose
+#      model:
+#        type: 1
+#        color: { a: .5, r: 0.34, g: 0.51, b: 0.51 }
+#        scale: { x: 0.07, y: 0.07, z: 0.07 }
+#        mesh_resource: ''
+#        mesh_use_embedded_materials: true
+#      control_frames:
+#        - name: center
+#          frame:
+#            position: { x: 0., y: 0., z: 0. }
+#            orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      distance_function_descriptor: |
+#        type: line_segment
+#        parameters:
+#          pt1: [0., 0., .0]
+#          pt2: [0., 0., .0]
+#          radius: .035
+#    sphere2:
+#      pose:
+#        position: { x: .9, y: .2, z: 0.55 }
+#        orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      pose_topic: /world/objects/sphere3/pose
+#      model:
+#        type: 1
+#        color: { a: .5, r: 0.34, g: 0.51, b: 0.51 }
+#        scale: { x: 0.05, y: 0.05, z: 0.05 }
+#        mesh_resource: ''
+#        mesh_use_embedded_materials: true
+#      control_frames:
+#        - name: center
+#          frame:
+#            position: { x: 0., y: 0., z: 0. }
+#            orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      distance_function_descriptor: |
+#        type: line_segment
+#        parameters:
+#          pt1: [0., 0., .0]
+#          pt2: [0., 0., .0]
+#          radius: .025
+#    sphere3:
+#      pose:
+#        position: { x: .8, y: .2, z: 0.55 }
+#        orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      pose_topic: /world/objects/sphere4/pose
+#      model:
+#        type: 1
+#        color: { a: .5, r: 0.34, g: 0.51, b: 0.51 }
+#        scale: { x: 0.08, y: 0.08, z: 0.08 }
+#        mesh_resource: ''
+#        mesh_use_embedded_materials: true
+#      control_frames:
+#        - name: center
+#          frame:
+#            position: { x: 0., y: 0., z: 0. }
+#            orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      distance_function_descriptor: |
+#        type: line_segment
+#        parameters:
+#          pt1: [0., 0., .0]
+#          pt2: [0., 0., .0]
+#          radius: .04
+#    sphere4:
+#      pose:
+#        position: { x: .8, y: -.2, z: 0.55 }
+#        orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      pose_topic: /world/objects/sphere5/pose
+#      model:
+#        type: 1
+#        color: { a: .5, r: 0.34, g: 0.51, b: 0.51 }
+#        scale: { x: 0.1, y: 0.1, z: 0.1 }
+#        mesh_resource: ''
+#        mesh_use_embedded_materials: true
+#      control_frames:
+#        - name: center
+#          frame:
+#            position: { x: 0., y: 0., z: 0. }
+#            orientation: { w: 1.0, x: 0.0, y: 0.0, z: 0.0 }
+#      distance_function_descriptor: |
+#        type: line_segment
+#        parameters:
+#          pt1: [0., 0., .0]
+#          pt2: [0., 0., .0]
+#          radius: .05

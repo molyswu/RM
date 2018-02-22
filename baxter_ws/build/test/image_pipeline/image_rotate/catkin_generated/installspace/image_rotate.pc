@@ -1,0 +1,8 @@
+prefix=/home/leroypc/baxter_ws/install
+
+Name: image_rotate
+Description: Description of image_rotate
+Version: 1.12.20
+Cflags: -I/home/leroypc/baxter_ws/install/include
+Libs: -L/home/leroypc/baxter_ws/install/lib 
+Requires: 

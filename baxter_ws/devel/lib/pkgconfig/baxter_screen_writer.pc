@@ -1,0 +1,8 @@
+prefix=/home/leroypc/baxter_ws/devel
+
+Name: baxter_screen_writer
+Description: Description of baxter_screen_writer
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/leroypc/baxter_ws/devel/lib 
+Requires: 

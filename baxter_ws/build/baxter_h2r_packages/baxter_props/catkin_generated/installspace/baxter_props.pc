@@ -1,0 +1,8 @@
+prefix=/home/leroypc/baxter_ws/install
+
+Name: baxter_props
+Description: Description of baxter_props
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/leroypc/baxter_ws/install/lib 
+Requires: 

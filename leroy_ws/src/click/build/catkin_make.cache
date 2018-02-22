@@ -1,0 +1,2 @@
+click_demo
+-DCATKIN_DEVEL_PREFIX=/home/leroypc/click/devel -DCMAKE_INSTALL_PREFIX=/home/leroypc/click/install -G Unix Makefiles

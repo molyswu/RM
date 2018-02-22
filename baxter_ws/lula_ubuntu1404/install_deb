@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+install_dir=/opt/lula
+
+if [[ -d $install_dir ]]; then
+    echo "Existing installation found. Replace?"
+    read -r -p "Remove and replace? [Y/n] " response
+    case "$response" in
+        ''|[yY][eE][sS]|[yY])
+            echo 'Removing previous installation and replacing...'
+            sudo rm -rf $install_dir
+            ;;
+        [nN][oO]|[nN]) 
+            echo "Keeping previous installation, exiting."
+            exit
+            ;;
+        *)
+            echo "Unrecognized response: $response"
+            exit 1
+    esac
+fi
+
+sudo dpkg -i lula.deb

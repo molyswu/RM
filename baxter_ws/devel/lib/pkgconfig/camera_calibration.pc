@@ -1,0 +1,8 @@
+prefix=/home/leroypc/baxter_ws/devel
+
+Name: camera_calibration
+Description: Description of camera_calibration
+Version: 1.12.20
+Cflags: 
+Libs: -L/home/leroypc/baxter_ws/devel/lib 
+Requires: 

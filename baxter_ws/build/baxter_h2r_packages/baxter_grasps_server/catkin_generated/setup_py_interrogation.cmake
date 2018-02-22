@@ -1,0 +1,6 @@
+set(baxter_grasps_server_SETUP_PY_VERSION "0.0.0")
+set(baxter_grasps_server_SETUP_PY_SCRIPTS "")
+set(baxter_grasps_server_SETUP_PY_PACKAGES "baxter_grasps_server")
+set(baxter_grasps_server_SETUP_PY_PACKAGE_DIRS "src/baxter_grasps_server")
+set(baxter_grasps_server_SETUP_PY_MODULES "")
+set(baxter_grasps_server_SETUP_PY_MODULE_DIRS "")
